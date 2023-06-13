@@ -73,6 +73,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-虚拟环境conda_jupyter-notebook" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/14/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/" class="article-date">
+  <time class="dt-published" datetime="2023-06-13T17:07:34.000Z" itemprop="datePublished">2023-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/06/14/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/">conda虚拟环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、conda创建虚拟环境-win10系统中，已安装anaconda3"><a href="#一、conda创建虚拟环境-win10系统中，已安装anaconda3" class="headerlink" title="一、conda创建虚拟环境(win10系统中，已安装anaconda3)"></a>一、conda创建虚拟环境(win10系统中，已安装anaconda3)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有环境列表(两种方法)</span></span><br><span class="line">$ conda <span class="built_in">env</span> list</span><br><span class="line">$ conda info -e</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-创建虚拟环境"><a href="#1-创建虚拟环境" class="headerlink" title="1. 创建虚拟环境"></a>1. 创建虚拟环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立名为 your_env_name ，python版本为 X.X 的虚拟环境</span></span><br><span class="line">$ conda create -n your_env_name python=X.X</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动虚拟环境</span></span><br><span class="line">$ conda activate your_env_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭虚拟环境</span></span><br><span class="line">$ conda deactivate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除虚拟环境</span></span><br><span class="line">$ conda remove -n your_env_name --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在虚拟环境中安装包，三种方法</span></span><br><span class="line">$ conda install [package_name]</span><br><span class="line">$ pip install [package_name]</span><br><span class="line"><span class="comment">## 在base环境下</span></span><br><span class="line">$ conda install -n your_env_name [package_name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除虚拟环境中包，三种方法</span></span><br><span class="line">$ conda remove [package_name]</span><br><span class="line">$ pip uninstall [package_name]</span><br><span class="line"><span class="comment">## 在base环境下</span></span><br><span class="line">$ conda remove -n your_env_name [package_name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># clone虚拟环境</span></span><br><span class="line">$ conda create -n env_name1 --<span class="built_in">clone</span> env_name2 </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-在虚拟环境中使用-jupyter-notebook-，方法1"><a href="#2-在虚拟环境中使用-jupyter-notebook-，方法1" class="headerlink" title="2. 在虚拟环境中使用 jupyter notebook ，方法1"></a>2. 在虚拟环境中使用 <code>jupyter notebook</code> ，方法1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在虚拟环境安装 ipykernel 包</span></span><br><span class="line">$ conda install ipykernel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看jupyter kernel 列表</span></span><br><span class="line">$ jupyter kernelspec list</span><br><span class="line"><span class="comment"># 将当前虚拟环境写入 jupyter notebook 的kernel中，并且可修改 notebook 显示名称</span></span><br><span class="line">$ python -m ipykernel install --user --name env_name --display-name <span class="string">&quot;name(jupyter显示名称)&quot;</span></span><br><span class="line"><span class="comment"># 删除kernel</span></span><br><span class="line">$ jupyter kernelspec remove kernelname</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在当前环境安装 notebook</span></span><br><span class="line">$ pip install notebook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 notebook</span></span><br><span class="line">$ jupyter notebook</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="在虚拟环境中使用-jupyter-notebook-，方法2（推荐）"><a href="#在虚拟环境中使用-jupyter-notebook-，方法2（推荐）" class="headerlink" title="在虚拟环境中使用 jupyter notebook ，方法2（推荐）"></a>在虚拟环境中使用 <code>jupyter notebook</code> ，方法2（推荐）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在虚拟环境安装 ipykernel 包</span></span><br><span class="line">$ conda install ipykernel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在虚拟环境安装 nb_conda</span></span><br><span class="line">$ conda install nb_conda</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 notebook</span></span><br><span class="line">$ jupyter notebook</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/14/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/" data-id="cliuj6cm70000kgwfa8wmdyi5" data-title="conda虚拟环境" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-我的第一篇博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="article-date">
@@ -103,54 +151,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="cliu6t9zd0000kwwf6w2heq5s" data-title="我的第一篇博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-虚拟环境conda_jupyter-notebook" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/06/13/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/" class="article-date">
-  <time class="dt-published" datetime="2023-06-13T11:12:34.000Z" itemprop="datePublished">2023-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/06/13/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/">conda虚拟环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="一、conda创建虚拟环境-win10系统中，已安装anaconda3"><a href="#一、conda创建虚拟环境-win10系统中，已安装anaconda3" class="headerlink" title="一、conda创建虚拟环境(win10系统中，已安装anaconda3)"></a>一、conda创建虚拟环境(win10系统中，已安装anaconda3)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有环境列表(两种方法)</span></span><br><span class="line">$ conda <span class="built_in">env</span> list</span><br><span class="line">$ conda info -e</span><br></pre></td></tr></table></figure>
-
-<h2 id="1-创建虚拟环境"><a href="#1-创建虚拟环境" class="headerlink" title="1. 创建虚拟环境"></a>1. 创建虚拟环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立名为 your_env_name ，python版本为 X.X 的虚拟环境</span></span><br><span class="line">$ conda create -n your_env_name python=X.X</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动虚拟环境</span></span><br><span class="line">$ conda activate your_env_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭虚拟环境</span></span><br><span class="line">$ conda deactivate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除虚拟环境</span></span><br><span class="line">$ conda remove -n your_env_name --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在虚拟环境中安装包，三种方法</span></span><br><span class="line">$ conda install [package_name]</span><br><span class="line">$ pip install [package_name]</span><br><span class="line"><span class="comment">## 在base环境下</span></span><br><span class="line">$ conda install -n your_env_name [package_name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除虚拟环境中包，三种方法</span></span><br><span class="line">$ conda remove [package_name]</span><br><span class="line">$ pip uninstall [package_name]</span><br><span class="line"><span class="comment">## 在base环境下</span></span><br><span class="line">$ conda remove -n your_env_name [package_name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># clone虚拟环境</span></span><br><span class="line">$ conda create -n env_name1 --<span class="built_in">clone</span> env_name2 </span><br></pre></td></tr></table></figure>
-
-<h2 id="2-在虚拟环境中使用-jupyter-notebook-，方法1"><a href="#2-在虚拟环境中使用-jupyter-notebook-，方法1" class="headerlink" title="2. 在虚拟环境中使用 jupyter notebook ，方法1"></a>2. 在虚拟环境中使用 <code>jupyter notebook</code> ，方法1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在虚拟环境安装 ipykernel 包</span></span><br><span class="line">$ conda install ipykernel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看jupyter kernel 列表</span></span><br><span class="line">$ jupyter kernelspec list</span><br><span class="line"><span class="comment"># 将当前虚拟环境写入 jupyter notebook 的kernel中，并且可修改 notebook 显示名称</span></span><br><span class="line">$ python -m ipykernel install --user --name env_name --display-name <span class="string">&quot;name(jupyter显示名称)&quot;</span></span><br><span class="line"><span class="comment"># 删除kernel</span></span><br><span class="line">$ jupyter kernelspec remove kernelname</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在当前环境安装 notebook</span></span><br><span class="line">$ pip install notebook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 notebook</span></span><br><span class="line">$ jupyter notebook</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="在虚拟环境中使用-jupyter-notebook-，方法2（推荐）"><a href="#在虚拟环境中使用-jupyter-notebook-，方法2（推荐）" class="headerlink" title="在虚拟环境中使用 jupyter notebook ，方法2（推荐）"></a>在虚拟环境中使用 <code>jupyter notebook</code> ，方法2（推荐）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在虚拟环境安装 ipykernel 包</span></span><br><span class="line">$ conda install ipykernel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在虚拟环境安装 nb_conda</span></span><br><span class="line">$ conda install nb_conda</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 notebook</span></span><br><span class="line">$ jupyter notebook</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/13/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/" data-id="cliuj6cm70000kgwfa8wmdyi5" data-title="conda虚拟环境" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,11 +244,11 @@
       <ul>
         
           <li>
-            <a href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
+            <a href="/2023/06/14/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/">conda虚拟环境</a>
           </li>
         
           <li>
-            <a href="/2023/06/13/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/">conda虚拟环境</a>
+            <a href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
           </li>
         
           <li>
