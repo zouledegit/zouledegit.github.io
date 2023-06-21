@@ -152,6 +152,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-虚拟环境Virtualenv-Pipenv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/06/15/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83Virtualenv-Pipenv/">conda虚拟环境</a>
+    </h1>
+  
+
+        
+        <a href="/2023/06/15/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83Virtualenv-Pipenv/" class="archive-article-date">
+  	<time datetime="2023-06-15T09:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、Virtualenv-Python虚拟环境-ubuntu系统中"><a href="#一、Virtualenv-Python虚拟环境-ubuntu系统中" class="headerlink" title="一、Virtualenv - Python虚拟环境(ubuntu系统中)"></a>一、Virtualenv - Python虚拟环境(ubuntu系统中)</h1><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>默认包管理的问题</li>
+<li>虚拟环境的建立</li>
+</ul>
+<h2 id="Virtualenv-官网"><a href="#Virtualenv-官网" class="headerlink" title="Virtualenv-官网"></a>Virtualenv-官网</h2><p><a target="_blank" rel="noopener" href="https://virtualenv.pypa.io/en/latest/">https://virtualenv.pypa.io/en/latest/</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install virtualenv</span><br><span class="line">$ virtualenv --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="建立第一个虚拟环境"><a href="#建立第一个虚拟环境" class="headerlink" title="建立第一个虚拟环境"></a>建立第一个虚拟环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> [venv_root]</span><br><span class="line"><span class="comment"># 建立虚拟环境</span></span><br><span class="line">$ virtualenv myweb</span><br><span class="line"><span class="comment"># 启动虚拟环境</span></span><br><span class="line">$ . myweb/bin/activate</span><br><span class="line"><span class="comment"># 在虚拟环境中安装包</span></span><br><span class="line">$ pip install flask</span><br><span class="line">$ pip list</span><br><span class="line"><span class="comment"># 推出虚拟环境</span></span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="建立第二个虚拟环境"><a href="#建立第二个虚拟环境" class="headerlink" title="建立第二个虚拟环境"></a>建立第二个虚拟环境</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> [venv_root]</span><br><span class="line">$ virtualenv mydeep</span><br><span class="line">$ . mydeep/bin/activate</span><br><span class="line">$ pip list</span><br><span class="line">$ pip install numpy</span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="包导出与安装"><a href="#包导出与安装" class="headerlink" title="包导出与安装"></a>包导出与安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> [venv_root]</span><br><span class="line">$ pip list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成该环境的requirments.txt文件</span></span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> requirements.txt</span><br><span class="line">$ virtualenv mydev</span><br><span class="line">$ . mydev/bin/activate</span><br><span class="line">$ pip list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在新环境下安装别的环境包</span></span><br><span class="line">$ pip install -r requirements.txt</span><br><span class="line">$ pip list</span><br><span class="line">$ deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="课程文件"><a href="#课程文件" class="headerlink" title="课程文件"></a>课程文件</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/komavideo/LearnVirtualenv">https://gitee.com/komavideo/LearnVirtualenv</a></p>
+<h2 id="小马视频频道"><a href="#小马视频频道" class="headerlink" title="小马视频频道"></a>小马视频频道</h2><p><a target="_blank" rel="noopener" href="http://komavideo.com/">http://komavideo.com</a></p>
+<h1 id="二、pipenv-给人用的Python开发管理工具（ubuntu系统中）"><a href="#二、pipenv-给人用的Python开发管理工具（ubuntu系统中）" class="headerlink" title="二、pipenv - 给人用的Python开发管理工具（ubuntu系统中）"></a>二、pipenv - 给人用的Python开发管理工具（ubuntu系统中）</h1><h2 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>pipenv是更加便捷的Python项目管理工具</li>
+</ul>
+<h2 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h2><p><a target="_blank" rel="noopener" href="http://pipenv.org/">http://pipenv.org/</a></p>
+<h2 id="在线体验"><a href="#在线体验" class="headerlink" title="在线体验"></a>在线体验</h2><p><a target="_blank" rel="noopener" href="https://rootnroll.com/d/pipenv/">https://rootnroll.com/d/pipenv/</a></p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install pipenv</span><br><span class="line">$ pipenv --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="第一个工程项目"><a href="#第一个工程项目" class="headerlink" title="第一个工程项目"></a>第一个工程项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> myweb</span><br><span class="line">$ <span class="built_in">cd</span> myweb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 项目初始化，会自动安装几个基础包，在当前项目生成Pipfile和Pipfile.lock两个文件，随机生成虚拟目录名称</span></span><br><span class="line">$ pipenv install</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cat</span> Pipfile</span><br><span class="line">$ pip list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活该虚拟环境</span></span><br><span class="line">$ pipenv shell</span><br><span class="line"><span class="comment"># 不激活虚拟环境也可以，通过 pipenv run 执行当前工程已有虚拟环境的命令，如</span></span><br><span class="line">$ pipenv run pip list</span><br><span class="line"></span><br><span class="line">$ pip list</span><br><span class="line"><span class="comment"># 查看该虚拟环境安装目录</span></span><br><span class="line">$ pipenv --venv</span><br><span class="line"><span class="comment"># 查看该虚拟</span></span><br><span class="line">$ pipenv graph</span><br><span class="line"><span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line"><span class="comment"># 安装开发专用包</span></span><br><span class="line">$ pipenv install --dev requests</span><br><span class="line">$ <span class="built_in">cat</span> Pipfile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除虚拟环境</span></span><br><span class="line">$ pipenv --<span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="团队内项目共享"><a href="#团队内项目共享" class="headerlink" title="团队内项目共享"></a>团队内项目共享</h2><h3 id="Pipfile"><a href="#Pipfile" class="headerlink" title="Pipfile"></a>Pipfile</h3><p>将建立好的Pipfile文件直接拷贝给项目组的其他成员，可迅速完成开发环境的搭建。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> myweb1</span><br><span class="line">$ <span class="built_in">cd</span> myweb1</span><br><span class="line">$ wget http://192.168.1.1/myweb/Pipfile</span><br><span class="line"><span class="comment"># 安装依赖库，包括开发用依赖库</span></span><br><span class="line">$ pipenv install --dev</span><br><span class="line">$ pipenv shell</span><br><span class="line">$ pip list</span><br><span class="line">$ <span class="built_in">exit</span></span><br><span class="line">$ pipenv --venv</span><br><span class="line"><span class="comment"># 删除虚拟环境</span></span><br><span class="line">$ pipenv --<span class="built_in">rm</span></span><br><span class="line">$ pipenv --venv</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行"><a href="#代码运行" class="headerlink" title="代码运行"></a>代码运行</h2><h3 id="main-py"><a href="#main-py" class="headerlink" title="main.py"></a>main.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pipenv run python main.py</span><br></pre></td></tr></table></figure>
+
+<h2 id="定义执行脚本"><a href="#定义执行脚本" class="headerlink" title="定义执行脚本"></a>定义执行脚本</h2><h3 id="Pipfile-1"><a href="#Pipfile-1" class="headerlink" title="Pipfile"></a>Pipfile</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[scripts]</span><br><span class="line">start = &quot;python main.py&quot;</span><br><span class="line">test = &quot;pytest&quot;</span><br><span class="line">list = &quot;pip list&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行脚本-1"><a href="#运行脚本-1" class="headerlink" title="运行脚本"></a>运行脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ pipenv run python main.py</span><br><span class="line">$ pipenv run start</span><br><span class="line">$ pipenv run <span class="built_in">test</span></span><br><span class="line">$ pipenv run list</span><br></pre></td></tr></table></figure>
+
+<h2 id="课程文件-1"><a href="#课程文件-1" class="headerlink" title="课程文件"></a>课程文件</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/komavideo/LearnPipenv">https://gitee.com/komavideo/LearnPipenv</a></p>
+<h2 id="小马视频频道-1"><a href="#小马视频频道-1" class="headerlink" title="小马视频频道"></a>小马视频频道</h2><p><a target="_blank" rel="noopener" href="http://komavideo.com/">http://komavideo.com</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/15/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83Virtualenv-Pipenv/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -330,7 +429,14 @@ ssh -T git@github.com
 
 
 
-<h2 id="主题（待更新。。。）"><a href="#主题（待更新。。。）" class="headerlink" title="主题（待更新。。。）"></a>主题（待更新。。。）</h2><h2 id="配置个性化域名（待更新。。。）"><a href="#配置个性化域名（待更新。。。）" class="headerlink" title="配置个性化域名（待更新。。。）"></a>配置个性化域名（待更新。。。）</h2>
+<h2 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h2><ul>
+<li>网上下载心仪的主题至 <code>hexo主目录/themes/</code> 下。</li>
+<li>更改主目录下 <code>_config.yml</code> 文件中的 <code>theme:</code> 为选择的主题问价夹名称</li>
+<li>更具所选主题的说明文档修改相关配置</li>
+<li>重新生成并部署即可</li>
+<li></li>
+</ul>
+<h2 id="配置个性化域名（待更新。。。）"><a href="#配置个性化域名（待更新。。。）" class="headerlink" title="配置个性化域名（待更新。。。）"></a>配置个性化域名（待更新。。。）</h2>
       
 
       
@@ -415,71 +521,6 @@ ssh -T git@github.com
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/06/14/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83conda_jupyter-notebook/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2023-06-13T11:12:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容</p>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>内容</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.gitee.com/">www.gitee.com</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/06/13/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
         </p>
       
 
